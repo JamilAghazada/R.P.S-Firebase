@@ -26,15 +26,16 @@ function playerExist(){
     db.ref('user1').on('value',function(resp){
         if(resp.val() != null){
             document.querySelector('.p1name').textContent =(Object.values(resp.val())[(Object.values(resp.val())).length-1].userName) 
-            
+            document.querySelector('.p1-score').textContent = (Object.values(resp.val())[(Object.values(resp.val())).length-1].userName +":" +playerOneWins)
 
         }
     })
     db.ref('user2').on('value',function(resp){
         if(resp.val() != null){
             document.querySelector('.p2name').textContent =(Object.values(resp.val())[(Object.values(resp.val())).length-1].userName) 
+            document.querySelector('.p2-score').textContent = (Object.values(resp.val())[(Object.values(resp.val())).length-1].userName +":" +playerTwoWins)
             document.querySelector('.name-btn').disabled = true
-        
+            
         }
 
     })
@@ -56,10 +57,14 @@ function startGame(){
                  })
             db.ref('user1').on('value',function(resp){
                 document.querySelector('.p1name').textContent =(Object.values(resp.val())[(Object.values(resp.val())).length-1].userName) 
+                document.querySelector('.p1-score').textContent =(Object.values(resp.val())[(Object.values(resp.val())).length-1].userName+":" +playerOneWins) 
+
             })
+
         }
         else{
             document.querySelector('.name-btn').disabled =true
+            
             for(let c of $('.p1-choice')){
                 c.style.display ="none"
             }
@@ -67,13 +72,15 @@ function startGame(){
                 ax.style.visibility = "visible"
             }
             userName = $('.enname').val().trim()
+           
             db.ref('user2').push(
                 {
                   userName
                 }
           )
           db.ref('user2').on('value',function(resp){
-            document.querySelector('.p2name').textContent =(Object.values(resp.val())[(Object.values(resp.val())).length-1].userName) 
+            document.querySelector('.p2name').textContent =(Object.values(resp.val())[(Object.values(resp.val())).length-1].userName)
+            document.querySelector('.p2-score').textContent = (Object.values(resp.val())[(Object.values(resp.val())).length-1].userName+":" +playerTwoWins)
         })
         }
        
