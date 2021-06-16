@@ -1,13 +1,5 @@
-var firebaseConfig = {
-    apiKey: "AIzaSyCXx1GoIA-jNwql9mMYbP-twVffKg-p_fU",
-    authDomain: "jamilaghazada-b5dba.firebaseapp.com",
-    databaseURL: "https://jamilaghazada-b5dba-default-rtdb.firebaseio.com",
-    projectId: "jamilaghazada-b5dba",
-    storageBucket: "jamilaghazada-b5dba.appspot.com",
-    messagingSenderId: "725775842770",
-    appId: "1:725775842770:web:3133c98a5d3a6f26309c0b"
-};
-firebase.initializeApp(firebaseConfig);
+//here you should write   your firebase credentials
+
 var db = firebase.database()
 var checkplayers = 0
 var playerOne = false
